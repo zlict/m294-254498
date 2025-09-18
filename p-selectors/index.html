@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Steam & Games — Selector Training Playground</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; margin: 0; padding: 1rem; background: #f5f7fa; color: #111; }
+    header, footer { background: #0b1620; color: #fff; padding: 1rem; border-radius: 8px; }
+    .container { display: grid; grid-template-columns: 260px 1fr 320px; gap: 1rem; margin-top: 1rem; }
+    nav.side { background: #fff; padding: .75rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+    main { background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+    aside.tools { background: #fff; padding: .75rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+    .game-card { border: 1px solid #e6eef6; padding: .75rem; border-radius: 6px; display: grid; grid-template-columns: 120px 1fr 120px; gap: .5rem; align-items: center; }
+    .cover { width: 100%; height: 90px; background: linear-gradient(135deg,#cfe9ff,#eaf6ff); display:flex; align-items:center; justify-content:center; border-radius:4px; }
+    .tags { display:flex; gap:.25rem; flex-wrap:wrap; }
+    .tag { padding:.15rem .4rem; border-radius:999px; background:#eef6ff; font-size:.75rem; }
+    table { width:100%; border-collapse: collapse; }
+    th, td { padding:.35rem .5rem; border-bottom: 1px solid #f0f4f8; text-align:left; }
+    summary { cursor:pointer; }
+    .hidden { display:none; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="page-title">Steam & Games — Selector Training Playground</h1>
+    <p class="lead">A small, richly nested HTML file with many elements, attributes and structures for practicing CSS and DOM selectors with JavaScript.</p>
+  </header>
+
+  <div class="container">
+    <nav class="side" aria-label="Main navigation">
+      <h2>Filters</h2>
+      <form id="filter-form">
+        <label for="search">Search games</label>
+        <input id="search" name="search" type="search" placeholder="Find a game..." />
+
+        <fieldset>
+          <legend>Platforms</legend>
+          <label><input type="checkbox" name="platform" value="windows"> Windows</label><br>
+          <label><input type="checkbox" name="platform" value="mac"> macOS</label><br>
+          <label><input type="checkbox" name="platform" value="linux"> Linux</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Price</legend>
+          <label><input type="radio" name="price" value="free"> Free to play</label><br>
+          <label><input type="radio" name="price" value="paid"> Paid</label>
+        </fieldset>
+
+        <details open>
+          <summary>Advanced</summary>
+          <label for="min-rating">Min Rating</label>
+          <input id="min-rating" name="minRating" type="number" min="0" max="100" value="60" />
+
+          <label for="genre">Genre</label>
+          <select id="genre" name="genre">
+            <option value="">Any</option>
+            <option value="action">Action</option>
+            <option value="adventure">Adventure</option>
+            <option value="rpg">RPG</option>
+            <option value="simulation">Simulation</option>
+            <option value="strategy">Strategy</option>
+          </select>
+        </details>
+
+        <button type="button" id="apply-filters">Apply</button>
+      </form>
+
+      <section aria-labelledby="quick-links">
+        <h3 id="quick-links">Quick Links</h3>
+        <ul>
+          <li><a href="#top-sellers" class="link-quick">Top Sellers</a></li>
+          <li><a href="#deals" class="link-quick">Deals</a></li>
+          <li><a href="#new-releases" class="link-quick">New Releases</a></li>
+        </ul>
+      </section>
+    </nav>
+
+    <main>
+      <section id="hero">
+        <h2>Featured Games</h2>
+        <div class="grid featured" aria-live="polite">
+          <!-- Featured game cards (nested elements with attributes) -->
+          <article class="game-card featured-card" data-game-id="g-001" data-genre="rpg" data-year="2024">
+            <div class="cover" role="img" aria-label="Cover art for Eldritch Voyage"><strong>EV</strong></div>
+            <div class="meta">
+              <h3 class="title">Eldritch Voyage <span class="badge" aria-hidden="true">New</span></h3>
+              <p class="desc">A story-driven RPG with exploration and mystery.</p>
+              <div class="tags">
+                <span class="tag">Single-player</span>
+                <span class="tag">Open World</span>
+                <span class="tag" data-tag="indie">Indie</span>
+              </div>
+            </div>
+            <div class="purchase">
+              <p class="price" data-currency="USD">$24.99</p>
+              <button class="btn buy" data-action="buy">Buy</button>
+            </div>
+          </article>
+
+          <article class="game-card featured-card" data-game-id="g-002" data-genre="action" data-year="2022">
+            <div class="cover" role="img" aria-label="Cover art for Skybreaker"><strong>SB</strong></div>
+            <div class="meta">
+              <h3 class="title">Skybreaker</h3>
+              <p class="desc">A fast-paced aerial combat game.</p>
+              <div class="tags">
+                <span class="tag">Multiplayer</span>
+                <span class="tag">Competitive</span>
+              </div>
+            </div>
+            <div class="purchase">
+              <p class="price" data-currency="USD">$39.99</p>
+              <button class="btn wishlist" data-action="wishlist">Add to wishlist</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="library" aria-labelledby="library-heading">
+        <h2 id="library-heading">Library</h2>
+        <p class="note">This list contains a mix of rows, nested lists, and table structures to practice selectors.</p>
+
+        <div class="library-grid">
+          <div class="collection" id="top-sellers">
+            <h3>Top Sellers</h3>
+            <ol class="games-list">
+              <li class="games-list__item" data-rank="1">
+                <header>
+                  <a href="#" class="game-link" data-game-id="g-101">Castle of Glass</a>
+                </header>
+                <p class="meta small">Genre: <span class="genre">Strategy</span> • Rating: <span class="rating">92</span></p>
+                <div class="extra">
+                  <p class="availability">Platforms: <span class="platform">Windows</span>, <span class="platform">Linux</span></p>
+                </div>
+              </li>
+              <li class="games-list__item" data-rank="2">
+                <header>
+                  <a href="#" class="game-link" data-game-id="g-102">Neon Drift</a>
+                </header>
+                <p class="meta small">Genre: <span class="genre">Racing</span> • Rating: <span class="rating">88</span></p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="collection" id="deals">
+            <h3>Deals & Discounts</h3>
+            <table aria-describedby="deals-note">
+              <caption id="deals-note">Weekly discounts</caption>
+              <thead>
+                <tr><th>Game</th><th>Original</th><th>Discount</th><th>Now</th></tr>
+              </thead>
+              <tbody>
+                <tr data-deal-id="d-1">
+                  <td><a class="deal-link" href="#" data-game-id="g-201">Obsidian Echoes</a></td>
+                  <td>$49.99</td>
+                  <td>60%</td>
+                  <td>$19.99</td>
+                </tr>
+                <tr data-deal-id="d-2">
+                  <td><a class="deal-link" href="#" data-game-id="g-202">Mech Armada</a></td>
+                  <td>$59.99</td>
+                  <td>30%</td>
+                  <td>$41.99</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="collection" id="new-releases">
+            <h3>New Releases</h3>
+            <ul class="new-list">
+              <li class="new-list__item">
+                <article data-game-id="g-301" class="preview">
+                  <h4 class="title small">Deep Space Diggers</h4>
+                  <p class="desc small">An indie mining sim with cooperative multiplayer.</p>
+                </article>
+              </li>
+              <li class="new-list__item">
+                <article data-game-id="g-302" class="preview">
+                  <h4 class="title small">Ghosts of Verdant</h4>
+                  <p class="desc small">A narrative horror adventure.</p>
+                </article>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="community" aria-labelledby="community-heading">
+        <h2 id="community-heading">Community & Reviews</h2>
+
+        <div class="reviews">
+          <article class="review" data-review-id="r-1001">
+            <header>
+              <h3>Review: Castle of Glass</h3>
+              <p class="byline">By <a href="#" class="user-link" data-user-id="u-88">GamerGal</a> on <time datetime="2025-09-01">Sept 1, 2025</time></p>
+            </header>
+            <p>Lovely mechanics and very replayable.</p>
+            <footer class="review-footer">
+              <button class="like" aria-pressed="false">Like</button>
+              <button class="reply">Reply</button>
+            </footer>
+          </article>
+
+          <article class="review hidden" data-review-id="r-1002">
+            <header>
+              <h3>Review: Neon Drift</h3>
+              <p class="byline">By <a href="#" class="user-link" data-user-id="u-99">Speedster</a></p>
+            </header>
+            <p>Great graphics but the AI is inconsistent.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="developer-area">
+        <h2>Developer Tools (for selector exercises)</h2>
+        <p>Below are nested forms and components that can help practice attribute and hierarchical selectors.</p>
+
+        <form id="dev-form">
+          <div class="form-row">
+            <label for="selector-input">Enter CSS selector</label>
+            <input id="selector-input" placeholder="e.g. .game-card .title" />
+            <button type="button" id="run-selector">Run</button>
+          </div>
+
+          <div class="results" aria-live="polite">
+            <h4>Matches</h4>
+            <ol id="selector-results" class="selector-results"></ol>
+          </div>
+        </form>
+
+      </section>
+
+    </main>
+
+    <aside class="tools">
+      <h3>Tools</h3>
+      <p>Small snippets and helpful elements.</p>
+
+      <details>
+        <summary>Selector examples</summary>
+        <ul>
+          <li><code>.game-card[data-genre="rpg"]</code></li>
+          <li><code>table tbody tr[data-deal-id]</code></li>
+          <li><code>#library .games-list__item:nth-child(2) .rating</code></li>
+          <li><code>[data-game-id^="g-3"]</code></li>
+          <li><code>a.user-link[data-user-id="u-88"]</code></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Quick JS snippets</summary>
+        <pre><code>// query all game titles
+const titles = document.querySelectorAll('.game-card .title');
+// find all discount rows
+const discounts = document.querySelectorAll('tr[data-deal-id]');
+</code></pre>
+      </details>
+
+      <button id="export-sample">Download sample JSON</button>
+    </aside>
+  </div>
+
+  <footer>
+    <small>Made for selector training — contains numerous nested elements, attributes, and examples. Use the "Run" button in the Developer Tools section to test selectors.</small>
+  </footer>
+</body>
+</html>
