@@ -34,6 +34,7 @@
         <script>
             const cantons = ["ag", "be", "fr", "gr", "ne", "sg", "sz", "ur", "zg", "ai", "bl", "ge", "ju", "nw", "sh", "tg", "vd", "zh", "ar", "bs", "gl", "lu", "ow", "so", "ti", "vs"];
             let selectedCards = [];
+            let errorsEl;
 
             function checkSelectedCards() {
                 if (selectedCards[0].src === selectedCards[1].src) {
@@ -42,6 +43,7 @@
                 } else {
                     selectedCards[0].classList.remove("turned");
                     selectedCards[1].classList.remove("turned");
+                    errorsEl.innerText = parseInt(errorsEl.innerText) + 1;
                 }
                 selectedCards = [];
             };
@@ -79,6 +81,7 @@
   
             document.addEventListener("DOMContentLoaded", () => {
                 const boardEl = document.getElementById("board");
+                errorsEl = document.getElementById("errors");
                 renderBoard(boardEl);
             });
         </script>
@@ -86,6 +89,9 @@
 
     <body>
         <div id="board"></div>
+        <div id="stats">
+            Versuche: <span id="errors">0</span>
+        </div>
     </body>
 
 </html>
