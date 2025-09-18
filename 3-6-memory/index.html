@@ -13,8 +13,12 @@
             }
 
             #board img {
-                filter: brightness(0.5);
+                filter: brightness(0);
                 background-color: black;
+                user-select: none;
+                cursor: pointer;
+                transition: transform 1s, filter 1s;
+                transform: rotate3d(0, 1, 0, 0.5turn);
             }
 
             #board img.removed {
@@ -24,6 +28,7 @@
             #board img.turned {
                 filter: none;
                 background-color: transparent;
+                transform: rotate3d(0, 0, 0, 0);
             }
         </style>
         <script>
@@ -42,6 +47,9 @@
             };
 
             function turnCard(event) {
+                if (event.target.classList.contains("turned")) {
+                    return;
+                }
                 if (selectedCards.length >= 2) {
                     checkSelectedCards();
                 }
@@ -57,6 +65,7 @@
                 const card = document.createElement("img");
                 card.src = getImagePath(canton);
                 card.onclick = turnCard;
+                card.draggable = false;
                 return card;
             }
 
