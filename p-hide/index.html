@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            div {
+                width: 300px;
+            }
+
+            div:nth-of-type(1) {
+                visibility: hidden;
+            }
+
+            div:nth-of-type(2) {
+                display: none;
+            }
+
+            div:nth-of-type(3) {
+                opacity: 0;
+            }
+        </style>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const testEl = document.querySelector("div:nth-of-type(4)");
+                testEl.innerHTML = "";
+            });
+        </script>
+    </head>
+
+    <body>
+        <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto dicta consequatur exercitationem optio quia, reiciendis provident dolorum nam nihil in dignissimos autem eligendi earum qui blanditiis hic neque voluptates laudantium?</div>
+        <div>Quae sint nulla ipsa molestiae distinctio praesentium explicabo at perspiciatis quidem veniam perferendis qui nobis accusantium mollitia exercitationem ea, doloremque obcaecati impedit vel temporibus animi omnis saepe dolor. Autem, accusamus.</div>
+        <div>Odit culpa sint eos eligendi possimus rerum laudantium dicta temporibus suscipit ea dolore, vero, exercitationem aliquam. Officiis officia ullam tempore, dicta dolor debitis rerum, temporibus deleniti facilis non nam minima!</div>
+        <div>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non earum nesciunt nobis? Animi dicta suscipit incidunt et modi. Sequi quis magni, architecto deleniti debitis sunt impedit reprehenderit necessitatibus asperiores temporibus?</span><span>Optio fugit, quis modi maxime assumenda provident magnam soluta, suscipit sapiente vero dolores cum consequatur odit voluptatem? Est placeat sint reprehenderit optio eaque facere nostrum, nemo dignissimos velit possimus cupiditate?</span><span>Reprehenderit iste accusantium non nihil, nam eligendi hic facilis labore distinctio, tenetur rem corporis dolorum quasi tempore temporibus fuga voluptatibus perferendis porro eos expedita. Eveniet doloribus quia accusamus ullam eligendi.</span><span>Iste autem dolorem rerum fuga animi eius ipsam harum quis placeat suscipit quas maiores reiciendis nobis quasi, voluptas culpa architecto at, amet maxime similique officiis, eveniet nihil! Debitis, possimus aliquid.</span>
+        </div>
+    </body>
+
+</html>
