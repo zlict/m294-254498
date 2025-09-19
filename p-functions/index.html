@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <script>
+            helloWorld1("Hans");
+            function helloWorld1(firstname) {
+                return `Hello ${firstname}`; // return "Hello " + firstname;
+            }
+            helloWorld1("Hans");
+
+            // helloWorld2("Hans"); geht nicht
+            const helloWorld2 = function (firstname) {
+                return `Hello ${firstname}`;
+            }
+            helloWorld2("Hans");
+
+            const helloWorld3 = (firstname) => {
+                return `Hello ${firstname}`;
+            };
+            helloWorld3("Hans");
+
+            const helloWorld4 = (firstname) => `Hello ${firstname}`;
+            helloWorld4("Hans");
+
+            document.addEventListener("DOMContentLoaded", () => console.log("Hello from Callback"))
+            document.addEventListener("DOMContentLoaded", function () {
+                console.log("Hello From Callback");
+            })
+
+            const eineListe = [83, 12390, 59, 294, -123, 349];
+
+            eineListe.forEach((n) => console.log(n));
+            const geradeZahlen = eineListe.filter((n) => n % 2 === 0);
+            // reduce
+            // find
+            // map
+            // ...
+
+            console.log(geradeZahlen);
+        </script>
+    </head>
+
+    <body>
+
+    </body>
+
+</html>
