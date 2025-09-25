@@ -14,7 +14,7 @@
         <script>
             let zipcodes;
 
-            fetch("./places.json")
+            fetch("./places.json", { headers: {'Content-Type': "application/json"}})
                 .then((res) => res.json())
                 .then((data) => zipcodes = data);
 
