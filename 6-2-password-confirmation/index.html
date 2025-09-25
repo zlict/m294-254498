@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Passwortbestätigung</title>
+        <style>
+            input:not([type=checkbox]), button {
+                display: block;
+            }
+
+            input:user-invalid {
+                border: 2px solid red;
+            }
+
+            input:user-valid {
+                border: 2px solid green;
+            }
+        </style>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const passwordEl = document.querySelector("input[name='password']");
+                const passwordConfirmationEl = document.querySelector("input[name='password-confirmation']");
+
+                passwordConfirmationEl.addEventListener("input", () => {
+                    if (passwordEl.value !== passwordConfirmationEl.value) {
+                        passwordConfirmationEl.setCustomValidity("Passwörter stimmen nicht überein");
+                    } else {
+                        passwordConfirmationEl.setCustomValidity("");
+                    }
+                })
+            });
+        </script>
+    </head>
+
+    <body>
+        <form>
+            <label>E-Mail-Adresse
+                <input type="email" name="email" required />
+            </label>
+            <label>Passwort
+                <input type="password" name="password" required />
+            </label>
+            <label>Passwortbestätigung
+                <input type="password" name="password-confirmation" required />
+            </label>
+            <label>AGB
+                <input type="checkbox" name="terms" required />
+            </label>
+            <button type="submit">Registrieren</button>
+        </form>
+
+    </body>
+
+</html>
