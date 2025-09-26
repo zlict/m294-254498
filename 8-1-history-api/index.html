@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            let countEl;
+
+            window.addEventListener("popstate", (event) => {
+                countEl.innerText = event.state.count;
+            });
+
+            document.addEventListener("DOMContentLoaded", () => {
+                const decrementEl = document.querySelector("#decrement");
+                countEl = document.querySelector("#count");
+                const incrementEl = document.querySelector("#increment");
+
+                decrementEl.addEventListener("click", () => {
+                    let currentCount = parseInt(countEl.innerText);
+                    currentCount--;
+                    history.pushState({ count: currentCount }, "", currentCount);
+                    countEl.innerText = currentCount;
+                });
+
+                incrementEl.addEventListener("click", () => {
+                    let currentCount = parseInt(countEl.innerText);
+                    currentCount++;
+                    history.pushState({ count: currentCount }, "", currentCount)
+                    countEl.innerText = currentCount;
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <button id="decrement">-1</button>
+        <div id="count">0</div>
+        <button id="increment">+1</button>
+    </body>
+
+</html>
